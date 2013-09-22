@@ -136,38 +136,38 @@ var Game = (function () {
   return Game;
 })();
 
-// var joelGame = new Game();
-// var requirejs = require('requirejs');
-// requirejs.config({nodeRequire: require});
-// requirejs(['../public/scripts/libs/Noduino', '../public/scripts/libs/Noduino.Serial', '../public/scripts/libs/Logger'], function (NoduinoObj, NoduinoConnector, Logger) {
-//   var Noduino = new NoduinoObj({'debug': false}, NoduinoConnector, Logger);
-//   Noduino.connect(function(err, board) {
-//     if (err) { return console.log(err); }
-//     console.log("found board");
-//     // joelGame.init();
+var joelGame = new Game();
+var requirejs = require('requirejs');
+requirejs.config({nodeRequire: require});
+requirejs(['../public/scripts/libs/Noduino', '../public/scripts/libs/Noduino.Serial', '../public/scripts/libs/Logger'], function (NoduinoObj, NoduinoConnector, Logger) {
+  var Noduino = new NoduinoObj({'debug': false}, NoduinoConnector, Logger);
+  Noduino.connect(function(err, board) {
+    if (err) { return console.log(err); }
+    console.log("found board");
+    // joelGame.init();
 
-//     board.withLED({pin: 3}, function(err, LED) {
-//       if (err) { return console.log(err); }
-//       board.withButton({pin: 2}, function(err, Button) {
-//         if (err) {console.log(err)};
-//           Button.on('change', function(B) {
-//             if (B.pushed) {
-//               console.log("PUSHED");
-//               LED.setOn();
-//               console.log('here');
-//                 setTimeout(function(){
-//                   LED.setOff();
-//                 }, 3000);
-//                 joelGame.sell();
-//             }
-//           });
-//         });
-//     });
-//   });
-// });
-for (var i = 0; i < 5; i++) {
-  sendMsg({'To': '4403085582', 'Msg': 'ROARGHHHHH THE DINOSAUURRGHH'});
-};
+    board.withLED({pin: 3}, function(err, LED) {
+      if (err) { return console.log(err); }
+      board.withButton({pin: 2}, function(err, Button) {
+        if (err) {console.log(err)};
+          Button.on('change', function(B) {
+            if (B.pushed) {
+              console.log("PUSHED");
+              LED.setOn();
+              console.log('here');
+                setTimeout(function(){
+                  LED.setOff();
+                }, 3000);
+                joelGame.sell();
+            }
+          });
+        });
+    });
+  });
+});
+// for (var i = 0; i < 5; i++) {
+//   sendMsg({'To': '4403085582', 'Msg': 'ROARGHHHHH THE DINOSAUURRGHH'});
+// };
 
 
 // Pass in parameters to the REST API using an object literal notation. The
